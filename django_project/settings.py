@@ -13,16 +13,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4ju2n@$f9d0c=h)_g0lbb%k9&@rf(xa$d$g$&5ri$uf)*gev^4'
-
-# SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = 'django-insecure-4ju2n@$f9d0c=h)_g0lbb%k9&@rf(xa$d$g$&5ri$uf)*gev^4' #это ключ для разработки
+ 
 DEBUG = True
 
 ALLOWED_HOSTS = os.environ["REPLIT_DOMAINS"].split(',')
@@ -30,7 +25,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://" + domain for domain in os.environ["REPLIT_DOMAINS"].split(',')
 ]
 
-# Application definition
+#Здесь мы добавляем домен для разработки
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'security_filter',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +123,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
